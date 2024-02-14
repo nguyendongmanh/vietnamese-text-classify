@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  mongodb:
+    image: "mongo"
+    env_file:
+      - envs/mongo.env
+  
+  crawler-dantri:
+    build:
+      context: .
+      dockerfile: crawl.dockerfile
+    env_file:
+      - envs/crawl-dantri.env
+    volumes:
+      - type: bind
+        source: 'data'
+        target: '/app/data'
+    depends_on:
+      - mongodb
+
+  

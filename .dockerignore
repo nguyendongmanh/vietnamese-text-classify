@@ -1,0 +1,7 @@
+.venv/
+data/
+.git
+.vscode
+.gitignore
+
+README.md
