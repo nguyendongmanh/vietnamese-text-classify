@@ -1,5 +1,7 @@
 .venv/
 data/
+train/
+models/
 .git
 .vscode
 .gitignore
