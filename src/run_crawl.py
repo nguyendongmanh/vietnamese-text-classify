@@ -25,7 +25,7 @@ def main():
         for topic in topics:
             total_posts = 0
             for topic_link in topic["link"]:
-                posts = dantri.walk_topic(topic["name"], topic_link)
+                posts = dantri.walk_topic(topic["name"], topic_link, num_of_pagination=Config.PAGINATION)
                 if len(posts) > 0:
                     update_posts = [
                         UpdateOne(
@@ -42,7 +42,7 @@ def main():
         export_collection(
             "mydb",
             path_to_save="data",
-            file_name="dantri",
+            file_name=Config.FILENAME,
             collection_name="dantri",
         )
 

@@ -12,8 +12,12 @@ def get_soup(url: str = None) -> BeautifulSoup:
         raise HTTPError("ROOT URL is required ...")
     response = requests.get(url, headers=Config.HEADER, timeout=Config.TIMEOUT)
     if response.status_code != 200:
-        raise HTTPError("There are some mistakes when making a request to url")
+        return None
     soup = BeautifulSoup(response.text, "lxml")
+    pnf_title = soup.find("div", class_="pnf-title")
+    if pnf_title:
+        if "OOPS" in pnf_title.text:
+            return None
     return soup
 
 

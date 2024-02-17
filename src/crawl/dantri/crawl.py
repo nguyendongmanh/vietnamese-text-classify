@@ -12,6 +12,8 @@ def get_topics(root_url: str = web_utils.ROOT_URL):
         submenu = topic.find("ol", class_="submenu")
         for a in submenu.find_all("a", href=True):
             path = a["href"]
+            if 'lich-thi-dau' in path:
+                continue
             if web_utils.is_path(path) & web_utils.is_valid_url(path):
                 topic_info["link"].append(path)
         result.append(topic_info)
@@ -46,6 +48,8 @@ def parse_post(post_url: str = None, main_topic: str = None):
     if web_utils.is_path(post_url):
         post_url = web_utils.join_with_root(post_url)
     soup = web_utils.get_soup(post_url)
+    if soup == None:
+        return None
     article = soup.find("article")
     if article is None:
         return None

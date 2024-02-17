@@ -20,8 +20,10 @@ class Config:
     SAVE_PATH = os.environ.get("SAVE-PATH")
     SAVE_AS = os.environ.get("SAVE-AS")
 
-    PAGINATION = os.environ.get("PAGINATION")
+    PAGINATION = int(os.environ.get("PAGINATION"))
     TIMEOUT = int(os.environ.get("TIMEOUT"))
 
     USERNAME = os.environ.get("USERNAME")
     PASSWORD = os.environ.get("PASSWORD")
+
+    FILENAME = os.environ.get("FILENAME")
